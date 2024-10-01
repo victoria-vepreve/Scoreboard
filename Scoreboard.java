@@ -17,20 +17,34 @@ public class Scoreboard
     }
     public void recordPlay(int score)
     {
-        if (activeTeam == teamOne)
+        if (teamOne.equals(activeTeam))
         {   
-            teamOneScore =+ score;
+            teamOneScore += score;
             if (score == 0)
             {   
-                activeTeam = teamTwo;
+                // System.out.println("test");
+                if(activeTeam.equals(teamOne))
+                {
+                    activeTeam = teamTwo;
+                    // System.out.println("team one active");
+                } 
+                else if (activeTeam.equals(teamTwo)) activeTeam = teamOne;
             }
         }
-        if (activeTeam == teamTwo)
+        else if (teamTwo.equals(activeTeam))
         {
-            teamTwoScore =+ score;
+            teamTwoScore += score;
             if (score == 0)
             {   
-                activeTeam = teamOne;
+                if(activeTeam.equals(teamOne))
+                {
+                    activeTeam = teamTwo;
+                }
+                else if (activeTeam.equals(teamTwo))
+                {
+                    // System.out.println("team two active");
+                    activeTeam = teamOne;
+                }
             }
         }
     }
